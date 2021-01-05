@@ -1,0 +1,25 @@
+<aura:component controller="BoatSearchResults">
+    <aura:attribute name="searchResultsTitle" type="Aura.Component[]">
+        <h1>Matching Boats</h1>
+    </aura:attribute>
+    <aura:attribute name="boats" type="Boat__c[]" />
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+    <lightning:card title="{!v.searchResultsTitle}" class="searchCard">
+        <lightning:layout horizontalAlign="spread" multipleRows="true">
+            <aura:if isTrue="{!v.boats.length > 0}">
+                <lightning:layoutItem class="slds-m-right_small">
+                    <aura:iteration items="{!v.boats}" var="boat">
+                        <c:BoatTile boat="{!boat}" />
+                    </aura:iteration>
+                </lightning:layoutItem>
+                <aura:set attribute="else">
+                    <lightning:layoutItem class="slds-align_absolute-center">
+                        <lightning:formattedText value="No boats found" />
+                    </lightning:layoutItem>
+                </aura:set>
+            </aura:if>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component controller="BoatSearchResults" implements="flexipage:availableForAllPageTypes" access="global">
+    <div class="boatSearchForm">
+        <c:BoatSearchForm />
+    </div>
+
+    <div>
+        <c:BoatSearchResults />
+    </div>
+</aura:component>
