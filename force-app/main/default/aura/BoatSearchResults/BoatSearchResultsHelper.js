@@ -5,7 +5,8 @@
 
         action.setCallback(this, function (response) {
             let state = response.getState();
-            if (state === "SUCCESS"){
+            //console.log(response.getReturnValue());
+            if (state === "SUCCESS") {
                 component.set("v.boats", response.getReturnValue());
             }
             else

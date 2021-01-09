@@ -1,10 +1,14 @@
-<aura:component controller="BoatSearchResults" implements="force:hasRecordId">
+<aura:component controller="BoatSearchResults"
+    implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
     <aura:attribute name="searchFormTitle" type="Aura.Component[]">
         <h1>Find a Boat</h1>
     </aura:attribute>
     <aura:attribute name="boatTypes" type="List" />
     <aura:attribute name="isNewEnabled" type="Boolean" />
     <aura:attribute name="newBoat" type="Object" />
+
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit" />
 
     <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
 
@@ -13,15 +17,14 @@
             <lightning:layoutItem padding="horizontal-small">
                 <!--Dropdown list-->
                 <lightning:select name="options" aura:id="boatType" label="">
-                    <option text="" value="" />
                     <option text="All Types" value="" />
                     <aura:iteration items="{!v.boatTypes}" var="boatType">
-                        <option text="{!boatType.Name}" value="{!boatType.Name}" />
+                        <option text="{!boatType.Name}" value="{!boatType.Id}" />
                     </aura:iteration>
                 </lightning:select>
             </lightning:layoutItem>
             <lightning:button name="searchBtn" class="slds-m-top_medium" label="Search" variant="brand"
-                value="{!v.boatType.Name}" />
+                value="{!v.boatType.Id}" onclick="{!c.onFormSubmit}" />
             <aura:if isTrue="{!v.isNewEnabled}">
                 <lightning:button name="newBtn" class="slds-m-top_medium" label="New" onclick="{!c.handleCreateBoat}" />
             </aura:if>

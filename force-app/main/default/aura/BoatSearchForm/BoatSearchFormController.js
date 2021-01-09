@@ -3,7 +3,7 @@
         let action = component.get("c.getBoatTypes");
         let isNewBtnEnabled = $A.get("event.force:createRecord");
         if (isNewBtnEnabled)
-        component.set("v.isNewEnabled", true);
+            component.set("v.isNewEnabled", true);
 
         action.setCallback(this, function (response) {
             let state = response.getState();
@@ -13,7 +13,6 @@
                 console.log("Failed to get Boat Types with state: " + state);
             }
         });
-
         $A.enqueueAction(action);
     },
     handleCreateBoat: function (component, event, helper) {
@@ -25,5 +24,11 @@
             }
         });
         createRecordEvent.fire();
+    },
+    onFormSubmit: function (component, event, helper) {
+        let boatTypeId = component.find("boatType").get("v.value");
+        let createEvent = component.getEvent("formsubmit");
+        createEvent.setParams({ "formData": boatTypeId });
+        createEvent.fire();
     }
 })

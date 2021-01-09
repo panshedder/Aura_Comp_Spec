@@ -10,7 +10,7 @@ public with sharing class BoatSearchResults {
             if(boatTypeId == '') {
                 return [SELECT Name, BoatType__c, Picture__c, Contact__r.Name FROM Boat__c];
             } else {
-                return [SELECT Name, BoatType__c, Picture__c, Contact__r.Name FROM Boat__c WHERE BoatType__c =: boatTypeId];
+                return [SELECT Name, BoatType__c, Picture__c, Contact__r.Name FROM Boat__c WHERE BoatType__c=:boatTypeId];
             } 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
