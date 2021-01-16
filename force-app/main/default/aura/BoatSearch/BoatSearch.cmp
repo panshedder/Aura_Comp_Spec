@@ -1,5 +1,4 @@
-<aura:component controller="BoatSearchResults" 
-implements="flexipage:availableForAllPageTypes" access="global">
+<aura:component controller="BoatSearchResults" implements="flexipage:availableForAllPageTypes" access="global">
     <aura:handler name="formsubmit" event="c:FormSubmit" action="{!c.onFormSubmit}" />
 
     <div class="boatSearchForm">
