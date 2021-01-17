@@ -1,6 +1,6 @@
 <aura:component>
     <aura:attribute name="boat" type="Boat__c" />
-    <aura:attribute name="boatReview" type="BoatReview__c" />
+    <aura:attribute name="boatReview" type="BoatReview__c" access="private" />
     <aura:attribute name="recordError" type="String" access="private" />
 
     <aura:registerEvent name="BoatReviewAdded" type="c:BoatReviewAdded" />
@@ -13,7 +13,7 @@
     <lightning:card>
         <lightning:layout horizontalAlign="center" multipleRows="true">
             <lightning:layoutItem size="12" padding="around-small">
-                <lightning:input aura:id="title" label="Title" name="title" value="{!v.boatReview.Name}"
+                <lightning:input aura:id="title" label="Title" name="Title" value="{!v.boatReview.Name}"
                     required="true" />
                 <lightning:inputRichText aura:id="description" title="Description" label="Description"
                     value="{!v.boatReview.Comment__c}" disabledCategories="FORMAT_FONT" />

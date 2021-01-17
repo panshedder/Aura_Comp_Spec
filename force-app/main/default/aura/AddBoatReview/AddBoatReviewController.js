@@ -3,8 +3,6 @@
         helper.onInit(component, event, helper);
     },
     onSave: function (component, event, helper) {
-        
-
         component.find("service").saveRecord($A.getCallback(function (saveResults) {
             if (saveResults.state === "SUCCESS" || saveResults.draft === "DRAFT") {
                 console.log("Save completely succesfully");
