@@ -2,6 +2,8 @@
     <aura:attribute name="boat" type="Boat__c" />
     <aura:attribute name="displayButton" type="Boolean" default="false" />
 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
     <lightning:card iconName="utility:anchor">
         <aura:set attribute="title">
             {!v.boat.Contact__r.Name}'s Boat
